@@ -21,8 +21,9 @@ ENABLED_COMPONENTS="--enable-protocol=file --enable-demuxer=mov \
 
  CONFIGURE_FLAGS=" 
                         --disable-asm \
-                        --disable-doc \                        
+                        --disable-doc \
                         --disable-ffserver \
+                        --disable-programs \
                         --enable-cross-compile \
                         --disable-bzlib \
                         --disable-gpl \
@@ -42,6 +43,7 @@ ENABLED_COMPONENTS="--enable-protocol=file --enable-demuxer=mov \
                         --disable-debug \
                         --enable-protocol=file \
                         --disable-neon  \
+                        --enable-ffmpeg \
                         --enable-pic "
     
 LIBS="libavcodec libavformat libavutil libswscale libavdevice libavfilter \
@@ -52,7 +54,7 @@ if [ ! -e ${LIBNAME} ]
 then
     echo ""
     echo "* downloading ${LIBNAME}..."
-    git clone git://source.ffmpeg.org/ffmpeg.git ${LIBNAME}
+    git clone git@github.com:irewind/FFmpeg.git ${LIBNAME}
 else
     echo ""
     echo "* using existing ${LIBNAME}"
@@ -76,7 +78,8 @@ do
         CPU="i386"
     else
         PLATFORM="iPhoneOS"
-        COMPILER="llvm-gcc"
+        COMPILER="clang"
+        #COMPILER="/usr/bin/gcc"
         CONFIG_ARCH="arm"
         CPU="cortex-a8"
     fi
