@@ -78,8 +78,7 @@ do
         CPU="i386"
     else
         PLATFORM="iPhoneOS"
-        COMPILER="clang"
-        #COMPILER="/usr/bin/gcc"
+        COMPILER="llvm-gcc"        
         CONFIG_ARCH="arm"
         CPU="cortex-a8"
     fi
