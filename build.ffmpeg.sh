@@ -1,8 +1,8 @@
 #!/bin/sh
 
 LIBNAME="ffmpeg"
-#ARCHS="armv7 armv7s i386"
-ARCHS="armv7"
+ARCHS="armv7 armv7s i386"
+#ARCHS="armv7 armv7s"
 TARGET_OS=darwin
 
 DIR=`pwd`
@@ -10,17 +10,10 @@ XCODE_SELECT="xcode-select"
 XCODE=$(${XCODE_SELECT} --print-path)
 SDK_VERSION="6.1"
 
-#DISABLED_COMPONENTS="--disable-everything"
-
 ENABLED_COMPONENTS="--enable-protocol=file --enable-demuxer=mov \
                     --enable-muxer=mpegts --enable-bsf=h264_mp4toannexb"
 
- #CONFIGURE_FLAGS=" 
- #                   --enable-everything"
-#                   --disable-ffmpeg \
-
- CONFIGURE_FLAGS=" 
-                        --disable-asm \
+CONFIGURE_FLAGS="       --disable-asm \
                         --disable-doc \
                         --disable-ffserver \
                         --disable-programs \
@@ -37,14 +30,16 @@ ENABLED_COMPONENTS="--enable-protocol=file --enable-demuxer=mov \
                         --enable-muxer=mp4 \
                         --enable-muxer=mov \
                         --enable-encoder=mpeg4 \
-                        --enable-encoder=h264 \
                         --enable-decoder=mpeg4 \
                         --enable-decoder=h264 \
                         --disable-debug \
                         --enable-protocol=file \
                         --disable-neon  \
-                        --enable-ffmpeg \
+                        --disable-ffmpeg \
+                        --disable-ffplay \
                         --enable-pic "
+
+                        #--enable-ffmpeg \                        
     
 LIBS="libavcodec libavformat libavutil libswscale libavdevice libavfilter \
       libswresample"
@@ -70,17 +65,24 @@ do
 
     make clean
 
-    if [ "${ARCH}" == "i386" ]
+    if [ "${ARCH}" == "armv7" ]
     then
-        PLATFORM="iPhoneSimulator"
-        COMPILER="gcc"
-        CONFIG_ARCH="i386"
-        CPU="i386"
-    else
         PLATFORM="iPhoneOS"
-        COMPILER="llvm-gcc"        
+        COMPILER="llvm-gcc"
         CONFIG_ARCH="arm"
         CPU="cortex-a8"
+    elif [ "${ARCH}" == "armv7s" ] 
+    then
+        PLATFORM="iPhoneOS"
+        COMPILER="clang"        
+        CONFIG_ARCH="arm"
+        CPU="cortex-a9"
+    elif [ "${ARCH}" == "i386" ] 
+    then
+        PLATFORM="iPhoneSimulator"
+        COMPILER="llvm-gcc"
+        CONFIG_ARCH="i386"
+        CPU="i386"
     fi
 
     XCRUN_SDK=$(echo ${PLATFORM} | tr '[:upper:]' '[:lower:]')
@@ -104,13 +106,13 @@ do
         --cc=${CC} \
         --target-os=${TARGET_OS} \
         --arch=${CONFIG_ARCH} \
-        --cpu=${CPU} \
         --as='/usr/local/bin/gas-preprocessor.pl ${CC}' \
         --sysroot=${SDK} \
         --extra-cflags='${CFLAGS}' \
         --extra-ldflags='${LDFLAGS}' \
+        --cpu=${CPU} \
         ${CONFIGURE_FLAGS} \
-        --prefix="${DIR}/bin/${ARCH}"
+        --prefix="${DIR}/bin/${ARCH}"        
 
     make -j3 && make install
 
@@ -130,6 +132,10 @@ lipo -create "${DIR}/bin/armv7/lib/${LIB}.a" \
              "${DIR}/bin/armv7s/lib/${LIB}.a" \
              "${DIR}/bin/i386/lib/${LIB}.a" \
              -output "${DIR}/lib/${LIB}.a"
+
+#lipo -create "${DIR}/bin/armv7/lib/${LIB}.a" \
+#             "${DIR}/bin/armv7s/lib/${LIB}.a" \
+#             -output "${DIR}/lib/${LIB}.a"
 done
 
 mkdir -p ${DIR}/include
