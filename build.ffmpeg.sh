@@ -2,7 +2,6 @@
 
 LIBNAME="ffmpeg"
 ARCHS="armv7 armv7s i386"
-#ARCHS="armv7 armv7s"
 TARGET_OS=darwin
 
 DIR=`pwd`
@@ -132,11 +131,6 @@ lipo -create "${DIR}/bin/armv7/lib/${LIB}.a" \
              "${DIR}/bin/armv7s/lib/${LIB}.a" \
              "${DIR}/bin/i386/lib/${LIB}.a" \
              -output "${DIR}/lib/${LIB}.a"
-
-#lipo -create "${DIR}/bin/armv7/lib/${LIB}.a" \
-#             "${DIR}/bin/armv7s/lib/${LIB}.a" \
-#             -output "${DIR}/lib/${LIB}.a"
-done
 
 mkdir -p ${DIR}/include
 
