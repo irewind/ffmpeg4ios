@@ -113,7 +113,7 @@ do
         ${CONFIGURE_FLAGS} \
         --prefix="${DIR}/bin/${ARCH}"        
 
-    make -j3 && make install
+    #make -j3 && make install
 
 done
 
@@ -131,6 +131,7 @@ lipo -create "${DIR}/bin/armv7/lib/${LIB}.a" \
              "${DIR}/bin/armv7s/lib/${LIB}.a" \
              "${DIR}/bin/i386/lib/${LIB}.a" \
              -output "${DIR}/lib/${LIB}.a"
+done
 
 mkdir -p ${DIR}/include
 
