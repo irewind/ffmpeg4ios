@@ -203,6 +203,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "";
 				DEAD_CODE_STRIPPING = NO;
 				EXECUTABLE_PREFIX = lib;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -231,6 +232,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "";
 				DEAD_CODE_STRIPPING = NO;
 				EXECUTABLE_PREFIX = lib;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
