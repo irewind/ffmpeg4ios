@@ -1,0 +1,14 @@
+prefix=/Users/wf/Work/code/irewind-ios/External/ffmpeg4ios/bin/armv7s
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libavfilter
+Description: FFmpeg audio/video filtering library
+Version: 3.81.103
+Requires: libswresample = 0.17.103, libswscale = 2.4.100, libavformat = 55.12.102, libavcodec = 55.19.100, libavutil = 52.40.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir} -lavfilter -liconv -lm -lz
+Libs.private: 
+Cflags: -I${includedir}

@@ -2,12 +2,13 @@
 
 LIBNAME="ffmpeg"
 ARCHS="armv7 armv7s i386"
+#ARCHS="i386"
 TARGET_OS=darwin
 
 DIR=`pwd`
 XCODE_SELECT="xcode-select"
 XCODE=$(${XCODE_SELECT} --print-path)
-SDK_VERSION="6.1"
+SDK_VERSION="7.1"
 
 ENABLED_COMPONENTS="--enable-protocol=file --enable-demuxer=mov \
                     --enable-muxer=mpegts --enable-bsf=h264_mp4toannexb"
@@ -67,7 +68,7 @@ do
     if [ "${ARCH}" == "armv7" ]
     then
         PLATFORM="iPhoneOS"
-        COMPILER="llvm-gcc"
+        COMPILER="clang"
         CONFIG_ARCH="arm"
         CPU="cortex-a8"
     elif [ "${ARCH}" == "armv7s" ] 
@@ -79,7 +80,7 @@ do
     elif [ "${ARCH}" == "i386" ] 
     then
         PLATFORM="iPhoneSimulator"
-        COMPILER="llvm-gcc"
+        COMPILER="gcc"
         CONFIG_ARCH="i386"
         CPU="i386"
     fi
@@ -93,7 +94,7 @@ do
     export RANLIB="$(xcrun -sdk ${XCRUN_SDK} -find ranlib)"
 
     SDK="${XCODE}/Platforms/${PLATFORM}.platform/Developer/SDKs/${PLATFORM}${SDK_VERSION}.sdk"
-    export CFLAGS="-arch ${ARCH}"
+    export CFLAGS="-arch ${ARCH} -isysroot ${SDK}"
     export LDFLAGS="-arch ${ARCH} -isysroot ${SDK}"
 
     echo ""
@@ -111,9 +112,9 @@ do
         --extra-ldflags='${LDFLAGS}' \
         --cpu=${CPU} \
         ${CONFIGURE_FLAGS} \
-        --prefix="${DIR}/bin/${ARCH}"        
+        --prefix="${DIR}/bin/${ARCH}"
 
-    #make -j3 && make install
+    make -j3 && make install
 
 done
 
