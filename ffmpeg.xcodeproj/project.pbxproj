@@ -16,6 +16,13 @@
 		B677A02117A7B2D800E6DE16 /* cmdutils_common_opts.h in Headers */ = {isa = PBXBuildFile; fileRef = B677A01717A7B2D800E6DE16 /* cmdutils_common_opts.h */; };
 		B677A02217A7B2D800E6DE16 /* ffmpeg_filter.c in Sources */ = {isa = PBXBuildFile; fileRef = B677A01817A7B2D800E6DE16 /* ffmpeg_filter.c */; };
 		B677A02317A7B2D800E6DE16 /* cmdutils.h in Headers */ = {isa = PBXBuildFile; fileRef = B677A01A17A7B2D800E6DE16 /* cmdutils.h */; };
+		B6968DED1A038CA90003E16A /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6968DE61A038CA90003E16A /* libavcodec.a */; };
+		B6968DEE1A038CA90003E16A /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6968DE71A038CA90003E16A /* libavdevice.a */; };
+		B6968DEF1A038CA90003E16A /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6968DE81A038CA90003E16A /* libavfilter.a */; };
+		B6968DF01A038CA90003E16A /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6968DE91A038CA90003E16A /* libavformat.a */; };
+		B6968DF11A038CA90003E16A /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6968DEA1A038CA90003E16A /* libavutil.a */; };
+		B6968DF21A038CA90003E16A /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6968DEB1A038CA90003E16A /* libswresample.a */; };
+		B6968DF31A038CA90003E16A /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6968DEC1A038CA90003E16A /* libswscale.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +36,13 @@
 		B677A01717A7B2D800E6DE16 /* cmdutils_common_opts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cmdutils_common_opts.h; path = ffmpeg/cmdutils_common_opts.h; sourceTree = "<group>"; };
 		B677A01817A7B2D800E6DE16 /* ffmpeg_filter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ffmpeg_filter.c; path = ffmpeg/ffmpeg_filter.c; sourceTree = "<group>"; };
 		B677A01A17A7B2D800E6DE16 /* cmdutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cmdutils.h; path = ffmpeg/cmdutils.h; sourceTree = "<group>"; };
+		B6968DE61A038CA90003E16A /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavcodec.a; sourceTree = "<group>"; };
+		B6968DE71A038CA90003E16A /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavdevice.a; sourceTree = "<group>"; };
+		B6968DE81A038CA90003E16A /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavfilter.a; sourceTree = "<group>"; };
+		B6968DE91A038CA90003E16A /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavformat.a; sourceTree = "<group>"; };
+		B6968DEA1A038CA90003E16A /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavutil.a; sourceTree = "<group>"; };
+		B6968DEB1A038CA90003E16A /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
+		B6968DEC1A038CA90003E16A /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswscale.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +50,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6968DF11A038CA90003E16A /* libavutil.a in Frameworks */,
+				B6968DF31A038CA90003E16A /* libswscale.a in Frameworks */,
+				B6968DEF1A038CA90003E16A /* libavfilter.a in Frameworks */,
+				B6968DEE1A038CA90003E16A /* libavdevice.a in Frameworks */,
+				B6968DED1A038CA90003E16A /* libavcodec.a in Frameworks */,
+				B6968DF21A038CA90003E16A /* libswresample.a in Frameworks */,
+				B6968DF01A038CA90003E16A /* libavformat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +66,7 @@
 		B6779FB417A6AD0400E6DE16 = {
 			isa = PBXGroup;
 			children = (
+				B6968DE51A038CA90003E16A /* lib */,
 				B677A01117A7B2D800E6DE16 /* ffmpeg.c */,
 				B677A01217A7B2D800E6DE16 /* ffmpeg.h */,
 				B677A01317A7B2D800E6DE16 /* ffmpeg_opt.c */,
@@ -64,6 +86,20 @@
 				B6779FBD17A6AD0400E6DE16 /* libffmpeg.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B6968DE51A038CA90003E16A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				B6968DE61A038CA90003E16A /* libavcodec.a */,
+				B6968DE71A038CA90003E16A /* libavdevice.a */,
+				B6968DE81A038CA90003E16A /* libavfilter.a */,
+				B6968DE91A038CA90003E16A /* libavformat.a */,
+				B6968DEA1A038CA90003E16A /* libavutil.a */,
+				B6968DEB1A038CA90003E16A /* libswresample.a */,
+				B6968DEC1A038CA90003E16A /* libswscale.a */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,7 +143,7 @@
 		B6779FB517A6AD0400E6DE16 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Walter Fettich";
 			};
 			buildConfigurationList = B6779FB817A6AD0400E6DE16 /* Build configuration list for PBXProject "ffmpeg" */;
@@ -146,7 +182,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -170,7 +205,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -178,7 +213,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -195,14 +229,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
 		B6779FC217A6AD0400E6DE16 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DEAD_CODE_STRIPPING = NO;
 				EXECUTABLE_PREFIX = lib;
 				GCC_VERSION = "";
@@ -215,6 +248,7 @@
 					"\"$(SRCROOT)/../libavformat\"",
 					"\"$(SRCROOT)/../libavutil\"",
 					"\"$(SRCROOT)/../libswscale\"",
+					"$(PROJECT_DIR)/lib",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -223,14 +257,13 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)\"/ffmpeg/**";
-				VALID_ARCHS = "armv7 armv7s i386";
+				VALID_ARCHS = "$(ARCHS_STANDARD) i386";
 			};
 			name = Debug;
 		};
 		B6779FC317A6AD0400E6DE16 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DEAD_CODE_STRIPPING = NO;
 				EXECUTABLE_PREFIX = lib;
 				GCC_VERSION = "";
@@ -243,6 +276,7 @@
 					"\"$(SRCROOT)/../libavformat\"",
 					"\"$(SRCROOT)/../libavutil\"",
 					"\"$(SRCROOT)/../libswscale\"",
+					"$(PROJECT_DIR)/lib",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -250,7 +284,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)\"/ffmpeg/**";
-				VALID_ARCHS = "armv7 armv7s i386";
+				VALID_ARCHS = "$(ARCHS_STANDARD) i386";
 			};
 			name = Release;
 		};
